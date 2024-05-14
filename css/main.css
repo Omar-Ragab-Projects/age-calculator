@@ -1,0 +1,332 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --purple: hsl(259, 100%, 65%);
+  --light-red: hsl(0, 100%, 67%);
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 94%);
+  --light-grey: hsl(0, 0%, 86%);
+  --smokey-grey: hsl(0, 1%, 44%);
+  --off-black: hsl(0, 0%, 8%);
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+.main-container {
+  height: 100vh;
+  background-color: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app {
+  background-color: white;
+  width: 58%;
+  border-radius: 3% 3% 27% 3%;
+  padding: 50px;
+}
+@media (max-width: 768px) {
+  .app {
+    width: 90%;
+    margin: 0 20px;
+    padding: 50px 25px;
+  }
+}
+.app .form {
+  display: flex;
+  margin-bottom: 0px;
+}
+@media (max-width: 992px) {
+  .app .form {
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+}
+.app .form div {
+  flex-basis: 20%;
+  position: relative;
+}
+.app .form div:not(:last-of-type) {
+  margin-right: 40px;
+}
+@media (max-width: 768px) {
+  .app .form div:not(:last-of-type) {
+    margin-right: 20px;
+  }
+}
+/* If Input Is Empty */
+.app .form div.empty label {
+  color: var(--light-red);
+  transition: 0.5s;
+}
+.app .form div.empty input {
+  border-color: var(--light-red);
+  transition: 0.5s;
+}
+.app .form div.empty::before {
+  content: "This field is required";
+  position: absolute;
+  bottom: -20px;
+  left: 0px;
+  color: var(--light-red);
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+}
+@media (max-width: 1230px) {
+  .app .form div.empty::before {
+    font-size: 9px;
+  }
+}
+@media (max-width: 623px) {
+  .app .form div.empty::before {
+    font-size: 10px;
+    bottom: -30px;
+  }
+}
+/* If Day Input Is Not Valid */
+.app .form div.not-valid label {
+  color: var(--light-red);
+  transition: 0.5s;
+}
+.app .form div.not-valid input {
+  border-color: var(--light-red);
+  transition: 0.5s;
+}
+.app .form .day.not-valid::before {
+  content: "Must be a valid day";
+  position: absolute;
+  bottom: -20px;
+  left: 0px;
+  color: var(--light-red);
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+}
+@media (max-width: 1230px) {
+  .app .form .day.not-valid::before {
+    font-size: 9px;
+  }
+}
+@media (max-width: 623px) {
+  .app .form .day.not-valid::before {
+    font-size: 10px;
+    bottom: -30px;
+  }
+}
+/* If Month Input Is Not Valid */
+.app .form .month.not-valid::before {
+  content: "Must be a valid month";
+  position: absolute;
+  bottom: -20px;
+  left: 0px;
+  color: var(--light-red);
+  font-style: italic;
+  font-size: 10px;
+  font-weight: 600;
+}
+@media (max-width: 1230px) {
+  .app .form .month.not-valid::before {
+    font-size: 8px;
+  }
+}
+@media (max-width: 623px) {
+  .app .form .month.not-valid::before {
+    font-size: 10px;
+    bottom: -30px;
+  }
+}
+/* If Year Input Is Not Valid */
+.app .form .year.not-valid::before {
+  content: "Must be a valid year";
+  position: absolute;
+  bottom: -20px;
+  left: 0px;
+  color: var(--light-red);
+  font-style: italic;
+  font-size: 10px;
+  font-weight: 600;
+}
+@media (max-width: 1230px) {
+  .app .form .year.not-valid::before {
+    font-size: 8px;
+  }
+}
+@media (max-width: 623px) {
+  .app .form .year.not-valid::before {
+    font-size: 10px;
+    bottom: -30px;
+  }
+}
+
+.app .form label {
+  color: var(--smokey-grey);
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 5px;
+}
+@media (max-width: 768px) {
+  .app .form label {
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+}
+.app .form input {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  min-width: 100px;
+  height: 70px;
+  border: 1px solid var(--light-grey);
+  border-radius: 6px;
+  font-size: 32px;
+  padding-left: 20px;
+  font-weight: bold;
+  color: var(--off-black);
+  caret-color: var(--smokey-grey);
+}
+@media (max-width: 768px) {
+  .app .form input {
+    min-width: 80px;
+    height: 60px;
+    font-size: 26px;
+    padding-left: 10px;
+  }
+}
+.app .form input:focus {
+  border-color: var(--purple);
+  outline: none;
+}
+.app .form input::placeholder {
+  font-size: 25px;
+  opacity: 0.7;
+}
+.app .form input:focus::placeholder {
+  opacity: 0;
+}
+.app .submit {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+@media (max-width: 992px) {
+  .app .submit {
+    margin: 80px 0;
+  }
+}
+.app .submit .line {
+  /* width: 90%; */
+  flex: 1;
+  height: 2px;
+  background-color: var(--off-white);
+}
+.app .submit button {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--purple);
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+@media (max-width: 992px) {
+  .app .submit button {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+@media (max-width: 768px) {
+  .app .submit button {
+    width: 70px;
+    height: 70px;
+  }
+}
+.app .submit button:hover {
+  background-color: var(--off-black);
+}
+.app .submit button span {
+  position: absolute;
+}
+.app .submit button span:first-child {
+  width: 2px;
+  height: 40px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+}
+.app .submit button span:nth-child(2),
+.app .submit button span:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+  border-color: transparent var(--white) transparent transparent;
+}
+.app .submit button span:nth-child(2) {
+  transform: rotate(-45deg);
+  right: 49%;
+  top: 50%;
+}
+.app .submit button span:nth-child(3) {
+  transform: rotate(-135deg);
+  left: 49%;
+  top: 50%;
+}
+@media (max-width: 768px) {
+  .app .submit button span:first-child {
+    height: 30px;
+  }
+  .app .submit button span:nth-child(2),
+  .app .submit button span:nth-child(3) {
+    width: 30px;
+    height: 30px;
+  }
+}
+.app .rezult div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.app .rezult div p {
+  font-size: 100px;
+  font-weight: bold;
+  color: var(--purple);
+  margin: 0 5px;
+}
+@media (max-width: 992px) {
+  .app .rezult div p {
+    font-size: 60px;
+  }
+}
+.app .rezult div:not(:first-of-type) {
+  margin-top: 0px;
+}
+.app .rezult span:not(:last-of-type) {
+  width: 50px;
+  height: 15px;
+  background-color: var(--purple);
+  margin-right: 20px;
+  transform: skewX(-10deg);
+}
+.app .rezult div .name {
+  color: var(--off-black);
+  font-size: 90px;
+  font-weight: 900;
+  font-style: italic;
+}
+@media (max-width: 992px) {
+  .app .rezult div .name {
+    font-size: 50px;
+  }
+}
+@media (max-width: 768px) {
+  .app .rezult span:not(:last-of-type) {
+    width: 30px;
+    height: 10px;
+  }
+}
