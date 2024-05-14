@@ -25,7 +25,12 @@ monthsRezult.prepend(rezultsM);
 dayRezult.prepend(rezultsD);
 
 function inputsCheck() {
-  if (newInputTest.length == 3) {
+  if (
+    newInputTest.length == 3 &&
+    !isNaN(newInputTest[0]) &&
+    !isNaN(newInputTest[1]) &&
+    !isNaN(newInputTest[2])
+  ) {
     spanTabs.forEach((e) => {
       e.style.cssText = "display: none ";
     });
