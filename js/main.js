@@ -8,7 +8,7 @@ let dayRezult = document.querySelector(".rezult .days");
 let date = new Date();
 let newInputTest = [];
 
-submitBtn.addEventListener("click", (e) => {
+submitBtn.addEventListener("click", () => {
   checkEmpty();
   checkDay();
   checkMonth();
@@ -35,24 +35,19 @@ function inputsCheck() {
       e.style.cssText = "display: none ";
     });
 
-    if (newInputTest[0] < date.getDate()) {
-      rezultsD.textContent = date.getDate() - newInputTest[0];
-      monthCheck();
-    } else {
-      rezultsD.textContent = date.getDate() + 30 - newInputTest[0];
-      newInputTest[1]++;
-      monthCheck();
-    }
-    rezultsY.textContent = date.getFullYear() - newInputTest[2];
-  }
-}
-
-function monthCheck() {
-  if (newInputTest[1] < date.getMonth() + 1) {
-    rezultsM.textContent = date.getMonth() + 1 - newInputTest[1];
-  } else {
-    rezultsM.textContent = date.getMonth() + 13 - newInputTest[1];
-    newInputTest[2]--;
+    let userBirth = `${newInputTest[1]} ${newInputTest[0]} ${newInputTest[2]}`;
+    let currentDate = new Date().getTime();
+    let birthDate = new Date(userBirth).getTime();
+    let diffrentDate = currentDate - birthDate;
+    rezultsY.textContent = Math.floor(
+      diffrentDate / (1000 * 60 * 60 * 24 * 365)
+    );
+    rezultsM.textContent = Math.floor(
+      (diffrentDate % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
+    );
+    rezultsD.textContent = Math.floor(
+      (diffrentDate % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+    );
   }
 }
 
@@ -109,3 +104,14 @@ function checkYear() {
     }
   }
 }
+
+document.onkeyup = function (e) {
+  if (e.key === "Enter") {
+    checkEmpty();
+    checkDay();
+    checkMonth();
+    checkYear();
+    checkvalue();
+    inputsCheck();
+  }
+};
